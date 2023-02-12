@@ -796,7 +796,7 @@ function _G.MyLib:CreateWindow(windowparams)
 			DropdownFrame.Size = UDim2.new(0, 187,0, 0)
 			DropdownFrame.Visible = false
 
-			Open.MouseButton1Click:Connect(function()
+			Open.MouseButton1Down:Connect(function()
 				if debounce == false then
 					debounce = true
 					if opened == false  then
@@ -821,7 +821,7 @@ function _G.MyLib:CreateWindow(windowparams)
 
 			end)
 			
-			Open.MouseButton1Click:Connect(function()
+			Open.MouseButton1Down:Connect(function()
 				if debounce == false then
 					for i = 0, 17, 1 do
 						ImageLabel_5.Rotation += 10
