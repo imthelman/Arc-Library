@@ -797,42 +797,37 @@ function _G.MyLib:CreateWindow(windowparams)
 			DropdownFrame.Visible = false
 
 			Open.MouseButton1Click:Connect(function()
-
-
-
-
-				script.Parent.MouseButton1Click:Connect(function()
-					if debounce == false then
-						debounce = true
-						if opened == false  then
-							Dropdown:TweenSize(UDim2.new(0, 240,0, 100), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 0.5)
-							DropdownFrame:TweenSize(UDim2.new(0, 187,0, 100), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 0.5)
-							TextLabel_2.Visible = false
-							DropdownFrame.Visible = true
-							wait(0.7)
-							debounce = false
-							opened = true
-						elseif opened == true then
-							Dropdown:TweenSize(UDim2.new(0, 240,0, 57), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 0.5)
-							DropdownFrame:TweenSize(UDim2.new(0, 187,0, 0), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 0.5)
-							wait(0.5)
-							TextLabel_2.Visible = true
-							DropdownFrame.Visible = false
-							wait(0.2)
-							debounce = false
-							opened = false
-						end
+				if debounce == false then
+					debounce = true
+					if opened == false  then
+						Dropdown:TweenSize(UDim2.new(0, 240,0, 100), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 0.5)
+						DropdownFrame:TweenSize(UDim2.new(0, 187,0, 100), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 0.5)
+						TextLabel_2.Visible = false
+						DropdownFrame.Visible = true
+						wait(0.7)
+						debounce = false
+						opened = true
+					elseif opened == true then
+						Dropdown:TweenSize(UDim2.new(0, 240,0, 57), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 0.5)
+						DropdownFrame:TweenSize(UDim2.new(0, 187,0, 0), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 0.5)
+						wait(0.5)
+						TextLabel_2.Visible = true
+						DropdownFrame.Visible = false
+						wait(0.2)
+						debounce = false
+						opened = false
 					end
-				end)
+				end
 
-				script.Parent.MouseButton1Click:Connect(function()
-					if debounce == false then
-						for i = 0, 17, 1 do
-							ImageLabel_5.Rotation += 10
-							wait(0.00001)
-						end
+			end)
+			
+			Open.MouseButton1Click:Connect(function()
+				if debounce == false then
+					for i = 0, 17, 1 do
+						ImageLabel_5.Rotation += 10
+						wait(0.00001)
 					end
-				end)
+				end
 			end)
 		end
 
