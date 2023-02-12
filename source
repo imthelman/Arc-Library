@@ -285,7 +285,7 @@ function _G.MyLib:CreateWindow(windowparams)
 		TabButton.Name = name.." Button"
 		TabButton.Parent = SideBar
 		TabButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		TabButton.BackgroundTransparency = 0.900
+		TabButton.BackgroundTransparency = 1
 		TabButton.BorderSizePixel = 0
 		TabButton.Size = UDim2.new(0, 87, 0, 30)
 		TabButton.Font = Enum.Font.Gotham
@@ -674,7 +674,6 @@ function _G.MyLib:CreateWindow(windowparams)
 			local UICorner_25 = Instance.new("UICorner")
 			local Dropdownframe = Instance.new("ScrollingFrame")
 			local UIListLayout_3 = Instance.new("UIListLayout")
-			local Option = Instance.new("TextButton")
 			local UICorner_26 = Instance.new("UICorner")
 			local UICorner_27 = Instance.new("UICorner")
 			local BG_2 = Instance.new("Frame")
@@ -771,6 +770,8 @@ function _G.MyLib:CreateWindow(windowparams)
 
 			for i = 1, #options, 1 do
 				-- Make Dropdown Options
+				
+				local Option = Instance.new("TextButton")
 
 				Option.Name = "Option"
 				Option.Parent = Dropdownframe
@@ -784,6 +785,12 @@ function _G.MyLib:CreateWindow(windowparams)
 
 				UICorner_26.CornerRadius = UDim.new(0, 12)
 				UICorner_26.Parent = Option
+				
+				local UIListLayout_3 = Instance.new("UIListLayout")
+				
+				UIListLayout_3.Parent = Dropdownframe
+				UIListLayout_3.SortOrder = Enum.SortOrder.LayoutOrder
+				UIListLayout_3.Padding = UDim.new(0.00499999989, 3)
 
 				local value = dropdownparams.Options[i]
 
