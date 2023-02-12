@@ -273,6 +273,7 @@ function _G.MyLib:CreateWindow(windowparams)
 		local TabButton = Instance.new("TextButton")
 		local UICornerTB = Instance.new("UICorner")
 		local Tab = Instance.new("ScrollingFrame")
+		local UIListLayout1 = Instance.new("UIListLayout")
 		
 		local UIListLayout = Instance.new("UIListLayout")
 		
@@ -308,9 +309,10 @@ function _G.MyLib:CreateWindow(windowparams)
 		Tab.ScrollBarThickness = 7
 		Tab.Visible = false
 
-		UIListLayout.Parent = Tab
-		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-		UIListLayout.Padding = UDim.new(0, 25)
+		UIListLayout1.Parent = Tab
+		UIListLayout1.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout1.Padding = UDim.new(0, 25)
+		Tab.CanvasSize = UDim2.new(0,0,0,UIListLayout1.AbsoluteContentSize.Y)
 
 
 		-- Tab Button
@@ -382,6 +384,7 @@ function _G.MyLib:CreateWindow(windowparams)
 			ImageLabel.Size = UDim2.new(0, 32, 0, 32)
 			ImageLabel.Image = "rbxassetid://12469290594"
 			ImageLabel.ImageColor3 = Color3.fromRGB(229, 229, 229)
+			Tab.CanvasSize = UDim2.new(0,0,0,UIListLayout1.AbsoluteContentSize.Y)
 
 
 
@@ -470,6 +473,7 @@ function _G.MyLib:CreateWindow(windowparams)
 
 			UICorner_14.CornerRadius = UDim.new(0, 12)
 			UICorner_14.Parent = Ting
+			Tab.CanvasSize = UDim2.new(0,0,0,UIListLayout1.AbsoluteContentSize.Y)
 
 
 			local toggl = false
@@ -531,6 +535,7 @@ function _G.MyLib:CreateWindow(windowparams)
 
 			UICorner_16.CornerRadius = UDim.new(0, 12)
 			UICorner_16.Parent = Label_3
+			Tab.CanvasSize = UDim2.new(0,0,0,UIListLayout1.AbsoluteContentSize.Y)
 
 		end
 
@@ -587,6 +592,7 @@ function _G.MyLib:CreateWindow(windowparams)
 
 			UICorner_2.CornerRadius = UDim.new(0, 12)
 			UICorner_2.Parent = TextLabel
+			Tab.CanvasSize = UDim2.new(0,0,0,UIListLayout1.AbsoluteContentSize.Y)
 
 		end
 
@@ -637,6 +643,7 @@ function _G.MyLib:CreateWindow(windowparams)
 			ImageLabel_2.Size = UDim2.new(0, 32, 0, 32)
 			ImageLabel_2.Image = "rbxassetid://12469288703"
 			ImageLabel_2.ImageColor3 = Color3.fromRGB(229, 229, 229)
+			Tab.CanvasSize = UDim2.new(0,0,0,UIListLayout1.AbsoluteContentSize.Y)
 
 
 			TextBox.FocusLost:Connect(function()
@@ -759,6 +766,7 @@ function _G.MyLib:CreateWindow(windowparams)
 			Open.TextColor3 = Color3.fromRGB(0, 0, 0)
 			Open.TextSize = 1.000
 			Open.TextTransparency = 1.000
+			Tab.CanvasSize = UDim2.new(0,0,0,UIListLayout1.AbsoluteContentSize.Y)
 
 
 			for i = 1, #options, 1 do
@@ -910,6 +918,7 @@ function _G.MyLib:CreateWindow(windowparams)
 
 			UICorner_8.CornerRadius = UDim.new(0, 12)
 			UICorner_8.Parent = Slider
+			Tab.CanvasSize = UDim2.new(0,0,0,UIListLayout1.AbsoluteContentSize.Y)
 
 
 			-----Variables-----
@@ -988,6 +997,7 @@ function _G.MyLib:CreateWindow(windowparams)
 			ImageLabel_3.Size = UDim2.new(0, 32, 0, 32)
 			ImageLabel_3.Image = "rbxassetid://12469292646"
 			ImageLabel_3.ImageColor3 = Color3.fromRGB(241, 194, 50)
+			Tab.CanvasSize = UDim2.new(0,0,0,UIListLayout1.AbsoluteContentSize.Y)
 
 		end
 
@@ -1033,10 +1043,10 @@ function _G.MyLib:CreateWindow(windowparams)
 			ImageLabel_6.Size = UDim2.new(0, 32, 0, 32)
 			ImageLabel_6.Image = "rbxassetid://12469297177"
 			ImageLabel_6.ImageColor3 = Color3.fromRGB(45, 98, 241)
+			Tab.CanvasSize = UDim2.new(0,0,0,UIListLayout1.AbsoluteContentSize.Y)
 		end
-
-		Tab.CanvasSize = UDim2.new(0,0,0,Tab.UIListLayout.AbsoluteContentSize.Y)
 		
+		Tab.CanvasSize = UDim2.new(0,0,0,UIListLayout1.AbsoluteContentSize.Y)
 
 		return _G.InsideTab;
 
