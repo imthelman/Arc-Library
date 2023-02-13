@@ -1,7 +1,7 @@
 # Arc Library
 This documentation is for the Arc Library.  Arc Library is currently in beta.  Some fetures wont be avalible
 
-## Adding the Library
+## Installing the Library
 ```lua
 local ArcLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/imthelman/Arc-Library/main/source')))()
 ```
