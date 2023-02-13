@@ -32,7 +32,7 @@ Window:Update({
 })
 ```
 
-## Creating a Tab
+## Creating a Tab 
 ```lua
 local Tab = Window:MakeTab({
 	Name = "Tab 1"
