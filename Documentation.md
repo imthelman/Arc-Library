@@ -71,14 +71,14 @@ Time = <number> - The duration of the notfication.
 ```lua
 Tab:CreateButton({
 	Name = "Button!",
-	CallBack = function()
-      		print("button pressed")
+	Callback = function()
+      	    -- Your function
   	end    
 })
 
 --[[
 Name = <string> - The name of the button.
-CallBack = <function> - The function of the button.
+Callback = <function> - The function of the button.
 ]]
 ```
 
@@ -86,8 +86,8 @@ CallBack = <function> - The function of the button.
 ```lua
 Button:Update({
 	Name = "New Button name",
-	CallBack = function()
-		print('updated button pressed')
+	Callback = function()
+	    -- Your function
 	end    
 })
 ```
@@ -99,15 +99,15 @@ You must set the button as a variable for this to work
 Tab:CreateToggle({
 	Name = "This is a toggle!",
 	Default = false,
-	CallBack = function(Value)
-		print(Value)
+	Callback = function(Value)
+	    -- Your function
 	end    
 })
 
 --[[
 Name = <string> - The name of the toggle.
 Default = <bool> - The default value of the toggle.
-CallBack = <function> - The function of the toggle.
+Callback = <function> - The function of the toggle.
 ]]
 ```
 
@@ -116,8 +116,8 @@ CallBack = <function> - The function of the toggle.
 Toggle:Update({
 	Name = "This is a toggle!",
 	Value = false,
-	CallBack = function(Value)
-		print(Value)
+	Callback = function(Value)
+	    -- Your function
 	end    
 })
 ```
@@ -131,15 +131,15 @@ Not avalible right now
 Tab:CreateColorpicker({
 	Name = "Colorpicker",
 	Default = Color3.fromRGB(255, 0, 0),
-	CallBack = function(Value)
-		print(Value)
+	Callback = function(Value)
+	    -- Your function
 	end	  
 })
 
 --[[
 Name = <string> - The name of the colorpicker.
 Default = <color3> - The default value of the colorpicker.
-CallBack = <function> - The function of the colorpicker.
+Callback = <function> - The function of the colorpicker.
 ]]
 ```
 
@@ -148,8 +148,8 @@ CallBack = <function> - The function of the colorpicker.
 ColorPicker:Update({
     Name = 'New Color Picker Name',
     Color = Color3.fromRGB(255,255,255)
-    CallBack = function(Value)
-     print('Updated '..Value)
+    Callback = function(Value)
+        -- Your function
     end
 })
 ```
@@ -164,8 +164,8 @@ Tab:CreateSlider({
 	Default = 5,
 	Color = Color3.fromRGB(255,255,255),
 	Increment = 1,
-	CallBack = function(Value)
-		print(Value)
+	Callback = function(Value)
+	    -- Your function
 	end    
 })
 
@@ -182,14 +182,14 @@ Callback = <function> - The function of the slider.
 ### Updating an existing Slider
 ```lua
 Slider:Update({
-	Name = "New Slider name",
-  Min = 0
-  Max = 10
-  Increment = 1
-  Value = 5
-	CallBack = function(Value)
-		print(Value)
-	end    
+    Name = "New Slider name",
+    Min = 0
+    Max = 10
+    Increment = 1
+    Value = 5
+    CallBack = function(Value)
+	-- Your function
+    end    
 })
 ```
 You must set the slider as a variable for this to work
@@ -230,7 +230,7 @@ Tab:CreateInput({
 	PlaceHolderText = "place holder text",
 	RemoveTextAfterFocusLost = false,
 	Callback = function(Value)
-		print(Value)
+	    -- Your function
 	end	  
 })
 
@@ -245,10 +245,10 @@ Callback = <function> - The function of the textbox.
 
 ## Creating a Keybind
 ```lua
-Tab:CreateKeyBind({
+Window:CreateKeybind({
 	Key = 'E',
 	Callback = function()
-		print("press")
+	    -- Your function
 	end    
 })
 
@@ -258,7 +258,15 @@ Callback = <function> - The function of the bind.
 ]]
 ```
 
-
+### Updating an excisting Keybind
+```lua
+Keybind:Update({
+    Key = 'Q',
+    Callback = function()
+        -- Your function
+    end
+})
+```
 
 ## Creating a Dropdown menu
 ```lua
@@ -267,7 +275,7 @@ Tab:AddDropdown({
 	Default = "1",
 	Options = {"1", "2"},
 	Callback = function(Value)
-		print(Value)
+	    -- Your function
 	end    
 })
 
@@ -284,8 +292,8 @@ Callback = <function> - The function of the dropdown.
 Dropdown:Update({
     Name = 'New Dropdown Name',
     Options = {'Option A', 'Option B'},
-    CallBack = function(v)
-     print(v)
+    Callback = function(v)
+        -- Your function
     end
 })
 ```
@@ -296,7 +304,7 @@ Dropdown:Clear()
 ```
 
 
-### How :Update work.
+### How :Update() work.
 It updates any part of the UI.
 Note that you dont need to change every element of the part. 
 Below in an example of using update.
