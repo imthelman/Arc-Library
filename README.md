@@ -11,4 +11,5 @@ local ArcLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/imthe
 
 Vist the [Documentation Tab](https://github.com/imthelman/Arc-Library/blob/main/Documentation.md) to learn more on all the functions
 
-#### Made by ImTheLMan
+#### Made by [ImTheLMan](https://github.com/imthelman)
+You dont have to give credit anywhere when using Arc UI Library
