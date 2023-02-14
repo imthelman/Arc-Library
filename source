@@ -4,6 +4,11 @@ _G.MyLib = {}
 function _G.MyLib:CreateWindow(windowparams)
 	-- Make UI Code
 	windowparams = windowparams or {}
+	local load = windowparams.LoadingScreen or true
+	if load == true then
+		--
+	end
+	
 	local title = windowparams.Title or 'Title'
 	local subtitle = windowparams.SubTitle or 'SubTitle'
 
@@ -43,7 +48,7 @@ function _G.MyLib:CreateWindow(windowparams)
 	Clipp.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	Clipp.BackgroundTransparency = 1.000
 	Clipp.ClipsDescendants = true
-	Clipp.Position = UDim2.new(0.186064929, 0, 0.194533736, 0)
+	Clipp.Position = UDim2.new(0.25, 0,0.25, 0)
 	Clipp.Size = UDim2.new(0, 473, 0, 240)
 
 	TopBar.Name = "TopBar"
