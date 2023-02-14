@@ -8,7 +8,9 @@ function _G.MyLib:CreateWindow(windowparams)
 	local subtitle = windowparams.SubTitle or 'SubTitle'
 
 	local UI = Instance.new("ScreenGui")
+	local Clipp = Instance.new("Frame")
 	local TopBar = Instance.new("Frame")
+	local Frameee = Instance.new("Frame")
 	local BG = Instance.new("Frame")
 	local SideBar = Instance.new("Frame")
 	local UIListLayout = Instance.new("UIListLayout")
@@ -27,41 +29,61 @@ function _G.MyLib:CreateWindow(windowparams)
 	local UICornerTB_2 = Instance.new("UICorner")
 	local x = Instance.new("Frame")
 	local Subtitle = Instance.new("TextLabel")
+	
+	local TellUs
+	local db = false
 
-	UI.Name = title.." Modrn UI"
+	UI.Name = title.." Arc UI"
 	UI.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 	UI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	UI.ResetOnSpawn = false
+	
+	Clipp.Name = "Clipp"
+	Clipp.Parent = UI
+	Clipp.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Clipp.BackgroundTransparency = 1.000
+	Clipp.ClipsDescendants = true
+	Clipp.Position = UDim2.new(0.186064929, 0, 0.194533736, 0)
+	Clipp.Size = UDim2.new(0, 473, 0, 240)
 
 	TopBar.Name = "TopBar"
-	TopBar.Parent = UI
+	TopBar.Parent = Clipp
 	TopBar.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
 	TopBar.BorderSizePixel = 0
-	TopBar.Position = UDim2.new(0.186346367, 0, 0.197749168, 0)
 	TopBar.Size = UDim2.new(0, 473, 0, 39)
+	TopBar.ZIndex = 8
+	
+	Frameee.Parent = TopBar
+	Frameee.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Frameee.BackgroundTransparency = 1.000
+	Frameee.Size = UDim2.new(0, 473, 0, 265)
+	Frameee.ClipsDescendants = true
 
 	BG.Name = "BG"
-	BG.Parent = TopBar
+	BG.Parent = Frameee
 	BG.BackgroundColor3 = Color3.fromRGB(84, 84, 84)
 	BG.BorderSizePixel = 0
 	BG.ClipsDescendants = true
-	BG.Position = UDim2.new(0, 0, 1.00000048, 0)
-	BG.Size = UDim2.new(0, 473, 0, 198)
+	BG.Position = UDim2.new(0, 0, 0.14, 0)
+	BG.Size = UDim2.new(0, 473, 0, 200)
 
 	SideBar.Name = "SideBar"
-	SideBar.Parent = BG
+	SideBar.Parent = Roundfx
 	SideBar.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
 	SideBar.BorderSizePixel = 0
-	SideBar.Size = UDim2.new(0, 100, 0, 198)
+	SideBar.ClipsDescendants = true
+	SideBar.Position = UDim2.new(0.0634249449, 0, 0, 0)
+	SideBar.Size = UDim2.new(0, 70, 0, 200)
+	SideBar.ZIndex = -8
 	
-	UIListLayout.Parent = SideBar
+	UIListLayout.Parent = SideBar_3
 	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-	UIListLayout.Padding = UDim.new(0,5)
+	UIListLayout.Padding = UDim.new(0, 5)
 
 	UICornerSB.CornerRadius = UDim.new(0, 25)
 	UICornerSB.Name = "UICornerSB"
-	UICornerSB.Parent = SideBar
+	UICornerSB.Parent = SideBar_3
 
 	Tabs.Name = "Tabs"
 	Tabs.Parent = BG
@@ -91,17 +113,14 @@ function _G.MyLib:CreateWindow(windowparams)
 	SideBar_2.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
 	SideBar_2.BorderSizePixel = 0
 	SideBar_2.ClipsDescendants = true
-	SideBar_2.Position = UDim2.new(0.0634249449, 0, 0, 0)
-	SideBar_2.Size = UDim2.new(0, 70, 0, 198)
+	SideBar_2.Size = UDim2.new(0, 100, 0, 165)
 	SideBar_2.ZIndex = -8
 
 	SideBar_3.Name = "SideBar"
-	SideBar_3.Parent = Roundfx
+	SideBar_3.Parent = BG
 	SideBar_3.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
 	SideBar_3.BorderSizePixel = 0
-	SideBar_3.ClipsDescendants = true
-	SideBar_3.Size = UDim2.new(0, 100, 0, 165)
-	SideBar_3.ZIndex = -8
+	SideBar_3.Size = UDim2.new(0, 100, 0, 200)
 
 	Title.Name = "Title"
 	Title.Parent = TopBar
@@ -109,6 +128,7 @@ function _G.MyLib:CreateWindow(windowparams)
 	Title.BackgroundTransparency = 1.000
 	Title.BorderSizePixel = 0
 	Title.Position = UDim2.new(0.0298850313, 0, 0, -2)
+	Title.Text = title
 	Title.Size = UDim2.new(0, 339, 0, 30)
 	Title.Font = Enum.Font.Gotham
 	Title.Text = title
@@ -116,7 +136,8 @@ function _G.MyLib:CreateWindow(windowparams)
 	Title.TextSize = 17.000
 	Title.TextStrokeColor3 = Color3.fromRGB(162, 162, 162)
 	Title.TextXAlignment = Enum.TextXAlignment.Left
-
+	Title.ZIndex = 9
+	
 	Minimize.Name = "Minimize"
 	Minimize.Parent = TopBar
 	Minimize.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
@@ -170,11 +191,11 @@ function _G.MyLib:CreateWindow(windowparams)
 	UICornerTB_2.Parent = TopBar
 
 	x.Name = "x"
-	x.Parent = TopBar
+	x.Parent = Frameee
 	x.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
 	x.BorderSizePixel = 0
-	x.Position = UDim2.new(0, 0, 0.510426044, 0)
-	x.Size = UDim2.new(0, 473, 0, 19)
+	x.Position = UDim2.new(0, 0, 0.09000001, 0)
+	x.Size = UDim2.new(0, 473, 0, 24)
 	x.ZIndex = -3
 
 	Subtitle.Name = "Subtitle"
@@ -190,19 +211,90 @@ function _G.MyLib:CreateWindow(windowparams)
 	Subtitle.TextSize = 11.000
 	Subtitle.TextStrokeColor3 = Color3.fromRGB(162, 162, 162)
 	Subtitle.TextXAlignment = Enum.TextXAlignment.Left
+	Subtitle.ZIndex = 9
+	
+	local showing = true
+	
+	local function minimize()
+		
+		Clipp:TweenSize(UDim2.new(0,0,0,0),Enum.EasingDirection.In,Enum.EasingStyle.Sine,0.75)
+		
+		showing = false
+		TellUs = Instance.new("Frame")
+		local UICorner = Instance.new("UICorner")
+		local Title = Instance.new("TextLabel")
+		local UICorner_2 = Instance.new("UICorner")
+		local Button = Instance.new("TextButton")
+		local UICorner_3 = Instance.new("UICorner")
 
+		TellUs.Name = "Tell Us"
+		TellUs.Parent = UI
+		TellUs.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+		TellUs.Position = UDim2.new(0.785431504, 0, 0.848874569, 0)
+		TellUs.Size = UDim2.new(0, 225, 0, 78)
+		game:GetService('Debris'):AddItem(TellUs, 5)
+
+		UICorner.CornerRadius = UDim.new(0, 25)
+		UICorner.Parent = TellUs
+
+		Title.Name = "Title"
+		Title.Parent = TellUs
+		Title.BackgroundColor3 = Color3.fromRGB(84, 84, 84)
+		Title.Position = UDim2.new(0.0530002154, 0, 0, 10)
+		Title.Size = UDim2.new(0, 200, 0, 25)
+		Title.Font = Enum.Font.Gotham
+		Title.Text = "Right Control To Toggle UI"
+		Title.TextColor3 = Color3.fromRGB(229, 229, 229)
+		Title.TextSize = 14.000
+
+		UICorner_2.CornerRadius = UDim.new(0, 25)
+		UICorner_2.Parent = Title
+
+		Button.Name = "Button"
+		Button.Parent = TellUs
+		Button.BackgroundColor3 = Color3.fromRGB(84, 84, 84)
+		Button.Position = UDim2.new(0.0529999994, 0, 0.381025642, 10)
+		Button.Size = UDim2.new(0, 200, 0, 25)
+		Button.Font = Enum.Font.SourceSans
+		Button.Text = "OK"
+		Button.TextColor3 = Color3.fromRGB(229, 229, 229)
+		Button.TextSize = 19.000
+
+		UICorner_3.CornerRadius = UDim.new(0, 25)
+		UICorner_3.Parent = Button
+
+		TellUs.Visible = true
+		Button.MouseButton1Down:Connect(function()
+			TellUs:Destroy()
+		end)
+		
+	end
+	
 	Minimize.MouseButton1Click:Connect(function()
-		TopBar.Visible = false
+		if db == false then
+			minimize()
+		end
 	end)
 	
 	local uhuh = true
+	local dbb = false
 	Subtract.MouseButton1Click:Connect(function()
-		if uhuh == true then
-			BG.Visible = false
-			uhuh = false
-		elseif uhuh == false then
-			BG.Visible = true
-			uhuh = true
+		if dbb == false then
+			dbb = true
+			if uhuh == true then
+				Clipp:TweenSize(UDim2.new(0,473,0,39),Enum.EasingDirection.In,Enum.EasingStyle.Sine,0.75)
+				wait(0.75)
+				Frameee.Visible = false
+				uhuh = false
+				dbb = false
+			elseif uhuh == false then
+				Clipp:TweenSize(UDim2.new(0, 473, 0, 240),Enum.EasingDirection.In,Enum.EasingStyle.Sine,0.75)
+				Frameee.Visible = true
+				wait(0.25)
+				wait(0.75)
+				uhuh = true
+				dbb = false
+			end
 		end
 	end)
 
@@ -211,7 +303,7 @@ function _G.MyLib:CreateWindow(windowparams)
 	local UserInputService = game:GetService("UserInputService")
 	local runService = (game:GetService("RunService"));
 
-	local gui = TopBar
+	local gui = Clipp
 
 	local dragging
 	local dragInput
@@ -261,37 +353,70 @@ function _G.MyLib:CreateWindow(windowparams)
 	end)
 
 	runService.Heartbeat:Connect(Update)
-
+	
+	game:GetService('UserInputService').InputBegan:Connect(function(inp,GPE)
+		if GPE == false and db == false then
+			db = true
+			if inp.KeyCode == Enum.KeyCode.RightControl then
+				if showing == true then
+					minimize()
+					showing = false
+				elseif showing == false then
+					Clipp:TweenSize(UDim2.new(0, 473, 0, 238),Enum.EasingDirection.In,Enum.EasingStyle.Sine,0.75)
+					if TellUs then
+						TellUs:Destroy()
+					end
+					showing = true
+				end
+			end
+			wait(0.75)
+			db = false
+		end
+	end)
+	
+	local hasTab = false
+	local tabs = 0
+	
 	-- Make Tabs
 	_G.InsideLib = {}
 	
 	function _G.InsideLib:CreateTab(tabparams)
 		
+		tabs += 1
+		
 		tabparams = tabparams or {}
-		local name = tabparams.Name or 'Tab'
+		local name = tabparams.Name or 'Tab '..tabs
 
 		local TabButton = Instance.new("TextButton")
 		local UICornerTB = Instance.new("UICorner")
 		local Tab = Instance.new("ScrollingFrame")
 		local UIListLayout1 = Instance.new("UIListLayout")
 		
+		local v = Instance.new('StringValue')
+		
 		local UIListLayout = Instance.new("UIListLayout")
 		
-		UIListLayout.Parent = SideBar
+		UIListLayout.Parent = SideBar_3
 		UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 		UIListLayout.Padding = UDim.new(0,5)
 
 		TabButton.Name = name.." Button"
-		TabButton.Parent = SideBar
+		TabButton.Parent = SideBar_3
 		TabButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		TabButton.BackgroundTransparency = 1
 		TabButton.BorderSizePixel = 0
-		TabButton.Size = UDim2.new(0, 87, 0, 30)
+		TabButton.Size = UDim2.new(0, 92, 0, 30)
 		TabButton.Font = Enum.Font.Gotham
 		TabButton.Text = name
 		TabButton.TextColor3 = Color3.fromRGB(229, 229, 229)
 		TabButton.TextSize = 14.000
+		while TabButton.TextFits == false do
+			TabButton.TextSize -= 0.1
+		end
+		
+		v.Parent = TabButton
+		v.Value = name
 
 		UICornerTB.CornerRadius = UDim.new(0, 25)
 		UICornerTB.Name = "UICornerTB"
@@ -313,27 +438,29 @@ function _G.MyLib:CreateWindow(windowparams)
 		UIListLayout1.SortOrder = Enum.SortOrder.LayoutOrder
 		UIListLayout1.Padding = UDim.new(0, 25)
 		Tab.CanvasSize = UDim2.new(0,0,0,UIListLayout1.AbsoluteContentSize.Y)
-
-
+		
 		-- Tab Button
 		TabButton.MouseButton1Click:Connect(function()
 			for i,v in next, Tabs:GetChildren() do
-				if not v:IsA('UICorner') then
-					if not v:IsA('UIListLayout') then
-						v.Visible = false
-					end
-				end
+				v.Visible = false
 			end
-			for i,v in next, SideBar:GetChildren() do
-				if not v:IsA('UICorner') then
-					if not v:IsA('UIListLayout') then
-						v.BackgroundTransparency = 1
-					end
+			for i,v in next, SideBar_3:GetChildren() do
+				if not (v:IsA('UICorner') or v:IsA('UIListLayout')) then
+					v.BackgroundTransparency = 1
+					v.Text = v.Value.Value
 				end
 			end
 			TabButton.BackgroundTransparency = 0.9
+			TabButton.Text = (tabparams.Name or 'Tab '..tabs)..'    '
 			Tab.Visible = true
 		end)
+		
+		if hasTab == false then
+			hasTab = true
+			TabButton.Text = (tabparams.Name or 'Tab '..tabs)..'    '
+			TabButton.BackgroundTransparency = 0.9
+			Tab.Visible = true
+		end
 
 		_G.InsideTab = {}
 
@@ -341,14 +468,14 @@ function _G.MyLib:CreateWindow(windowparams)
 		function _G.InsideTab:CreateButton(buttonparams)
 			buttonparams = buttonparams or {}
 			name = buttonparams.Name or 'Button'
-			local callback = buttonparams.CallBack or function() end
+			local callback = buttonparams.Callback or function() end
 			-- Make Button UI Code
 
 			local Button = Instance.new("Frame")
 			local Button_2 = Instance.new("TextButton")
 			local UICornerBB = Instance.new("UICorner")
 			local UICornerB = Instance.new("UICorner")
-			local ImageLabel = Instance.new("ImageLabel")
+			local ImageLabel = Instance.new("ImageButton")
 
 			Button.Name = "Button"
 			Button.Parent = Tab
@@ -367,6 +494,10 @@ function _G.MyLib:CreateWindow(windowparams)
 			Button_2.Text = name
 			Button_2.TextColor3 = Color3.fromRGB(229, 229, 229)
 			Button_2.TextSize = 14.000
+			
+			while Button_2.TextFits == false do
+				Button_2.TextSize -= 0.1
+			end
 
 			UICornerBB.CornerRadius = UDim.new(0, 12)
 			UICornerBB.Name = "UICornerBB"
@@ -394,6 +525,9 @@ function _G.MyLib:CreateWindow(windowparams)
 			Button_2.MouseButton1Click:Connect(function()
 				pcall(callback)
 			end)
+			ImageLabel.MouseButton1Click:Connect(function()
+				pcall(callback)
+			end)
 		end
 
 
@@ -401,7 +535,7 @@ function _G.MyLib:CreateWindow(windowparams)
 			-- Make Toggle UI Code
 			toggleparams = toggleparams or {}
 			name = toggleparams.Name or 'Toggle'
-			local callback = toggleparams.CallBack or function()end
+			local callback = toggleparams.Callback or function()end
 
 			local Toggle = Instance.new("Frame")
 			local Toggle_2 = Instance.new("TextLabel")
@@ -427,9 +561,12 @@ function _G.MyLib:CreateWindow(windowparams)
 			Toggle_2.Position = UDim2.new(0.0250000004, 0, 0.0900946707, 0)
 			Toggle_2.Size = UDim2.new(0, 144, 0, 35)
 			Toggle_2.Font = Enum.Font.Gotham
-			Toggle_2.Text = "Toggle"
+			Toggle_2.Text = name
 			Toggle_2.TextColor3 = Color3.fromRGB(229, 229, 229)
 			Toggle_2.TextSize = 14.000
+			while Toggle_2.TextFits == false do
+				Toggle_2.TextSize -= 0.1
+			end
 
 			UICorner_11.CornerRadius = UDim.new(0, 12)
 			UICorner_11.Parent = Toggle_2
@@ -452,7 +589,7 @@ function _G.MyLib:CreateWindow(windowparams)
 			Background.Parent = Toggle
 			Background.BackgroundColor3 = Color3.fromRGB(84, 84, 84)
 			Background.Position = UDim2.new(0.699999988, 0, 0.209999993, 0)
-			Background.Size = UDim2.new(0, 51, 0, 20)
+			Background.Size = UDim2.new(0, 51, 0, 22)
 			Background.Font = Enum.Font.SourceSans
 			Background.Text = ""
 			Background.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -465,6 +602,7 @@ function _G.MyLib:CreateWindow(windowparams)
 			Ting.Parent = Background
 			Ting.BackgroundColor3 = Color3.fromRGB(229, 229, 229)
 			Ting.Size = UDim2.new(0, 20, 0, 20)
+			Ting.Position = UDim2.new(0, 0, 0, 1.6)
 			Ting.ZIndex = 2
 			Ting.Font = Enum.Font.SourceSans
 			Ting.Text = ""
@@ -486,14 +624,20 @@ function _G.MyLib:CreateWindow(windowparams)
 				if debounce == false then
 					debounce = true
 					if toggl == false then
-						Ting:TweenPosition(UDim2.new(0.65, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.75)
-						wait(0.8)
+						Ting:TweenPosition(UDim2.new(0.65, 0, 0, 1.6), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.75)
 						toggl = true
+						pcall(function()
+							callback(toggl)
+						end)
+						wait(0.8)
 						debounce = false
 					elseif toggl == true then
-						Ting:TweenPosition(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.75)
-						wait(0.8)
+						Ting:TweenPosition(UDim2.new(0, 0, 0, 1.6), Enum.EasingDirection.InOut, Enum.EasingStyle.Sine, 0.75)
 						toggl = false
+						pcall(function()
+							callback(toggl)
+						end)
+						wait(0.8)
 						debounce = false
 					end
 				end
@@ -529,6 +673,10 @@ function _G.MyLib:CreateWindow(windowparams)
 			Label_4.TextColor3 = Color3.fromRGB(229, 229, 229)
 			Label_4.TextSize = 14.000
 			Label_4.Text = text
+			
+			while Label_4.TextFits == false do
+				Label_4.TextSize -= 0.1
+			end
 
 			UICorner_15.CornerRadius = UDim.new(0, 12)
 			UICorner_15.Parent = Label_4
@@ -542,7 +690,7 @@ function _G.MyLib:CreateWindow(windowparams)
 
 		function _G.InsideTab:CreateParagraph(paragraphparams)
 			paragraphparams = paragraphparams or {}
-			name = paragraphparams.Name or 'Paragraph'
+			title = paragraphparams.Title or 'Paragraph'
 			local text = paragraphparams.Text or 'Text'
 
 			-- Make Paragraph UI Code
@@ -571,9 +719,13 @@ function _G.MyLib:CreateWindow(windowparams)
 			Label.Position = UDim2.new(0.108333334, 0, 0.0500000007, 0)
 			Label.Size = UDim2.new(0, 181, 0, 21)
 			Label.Font = Enum.Font.Gotham
-			Label.Text = "Paragraph Label"
+			Label.Text = title
 			Label.TextColor3 = Color3.fromRGB(229, 229, 229)
 			Label.TextSize = 14.000
+			
+			while Label.TextFits == false do
+				Label.TextSize -= 0.1
+			end
 
 			UICorner.CornerRadius = UDim.new(0, 12)
 			UICorner.Parent = Label
@@ -584,11 +736,16 @@ function _G.MyLib:CreateWindow(windowparams)
 			TextLabel.Position = UDim2.new(0.0250000004, 0, 0.340000004, 0)
 			TextLabel.Size = UDim2.new(0, 227, 0, 60)
 			TextLabel.Font = Enum.Font.Gotham
-			TextLabel.Text = "Paragraph Text"
+			TextLabel.Text = text
 			TextLabel.TextColor3 = Color3.fromRGB(229, 229, 229)
 			TextLabel.TextSize = 14.000
 			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
 			TextLabel.TextYAlignment = Enum.TextYAlignment.Top
+			TextLabel.TextWrapped = true
+			
+			while TextLabel.TextFits == false do
+				TextLabel.TextSize -= 0.1
+			end
 
 			UICorner_2.CornerRadius = UDim.new(0, 12)
 			UICorner_2.Parent = TextLabel
@@ -600,8 +757,7 @@ function _G.MyLib:CreateWindow(windowparams)
 		function _G.InsideTab:CreateInput(inputparams)
 			-- Make Input UI Code
 			inputparams = inputparams or {}
-			name = inputparams.Text or 'Input'
-			local callback = inputparams.CallBack or function()end
+			local callback = inputparams.Callback or function()end
 			local removetextafterfocuslost = inputparams.RemoveTextAfterFocusLost or false
 			local placeholdertext = inputparams.PlaceHolderText or 'Type Here'
 
@@ -624,7 +780,6 @@ function _G.MyLib:CreateWindow(windowparams)
 			TextBox.Position = UDim2.new(0.0250000004, 0, 0.0944444463, 0)
 			TextBox.Size = UDim2.new(0, 181, 0, 35)
 			TextBox.Font = Enum.Font.Gotham
-			TextBox.Text = ""
 			TextBox.PlaceholderText = placeholdertext
 			TextBox.TextColor3 = Color3.fromRGB(229, 229, 229)
 			TextBox.TextSize = 14.000
@@ -666,7 +821,7 @@ function _G.MyLib:CreateWindow(windowparams)
 			dropdownparams = dropdownparams or {}
 			name = dropdownparams.Name or 'Dropdown'
 			local options = dropdownparams.Options or {}
-			local callback = dropdownparams.CallBack or function()end
+			local callback = dropdownparams.Callback or function()end
 
 			local Dropdown = Instance.new("Frame")
 			local UICorner_24 = Instance.new("UICorner")
@@ -674,7 +829,6 @@ function _G.MyLib:CreateWindow(windowparams)
 			local UICorner_25 = Instance.new("UICorner")
 			local Dropdownframe = Instance.new("ScrollingFrame")
 			local UIListLayout_3 = Instance.new("UIListLayout")
-			local UICorner_26 = Instance.new("UICorner")
 			local UICorner_27 = Instance.new("UICorner")
 			local BG_2 = Instance.new("Frame")
 			local UICorner_28 = Instance.new("UICorner")
@@ -698,7 +852,7 @@ function _G.MyLib:CreateWindow(windowparams)
 			DropdownFrame.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
 			DropdownFrame.BorderSizePixel = 0
 			DropdownFrame.ClipsDescendants = true
-			DropdownFrame.Size = UDim2.new(0, 163, 0, 100)
+			DropdownFrame.Size = UDim2.new(0, 160, 0, 100)
 			DropdownFrame.ZIndex = 9
 
 			UICorner_25.CornerRadius = UDim.new(0, 12)
@@ -711,9 +865,9 @@ function _G.MyLib:CreateWindow(windowparams)
 			Dropdownframe.BackgroundTransparency = 1.000
 			Dropdownframe.BorderSizePixel = 0
 			Dropdownframe.Position = UDim2.new(0.0250001103, 0, 0, 6)
-			Dropdownframe.Size = UDim2.new(0, 147, 0, 95)
+			Dropdownframe.Size = UDim2.new(0, 152, 0, 95)
 			Dropdownframe.ZIndex = 1000000000
-			Dropdownframe.ScrollBarThickness = 5
+			Dropdownframe.ScrollBarThickness = 7
 
 			UIListLayout_3.Parent = Dropdownframe
 			UIListLayout_3.SortOrder = Enum.SortOrder.LayoutOrder
@@ -740,6 +894,10 @@ function _G.MyLib:CreateWindow(windowparams)
 			TextLabel_2.TextColor3 = Color3.fromRGB(229, 229, 229)
 			TextLabel_2.TextSize = 14.000
 			TextLabel_2.Text = name
+			
+			while TextLabel_2.TextFits == false do
+				TextLabel_2.TextSize -= 0.1
+			end
 
 			UICorner_29.CornerRadius = UDim.new(0, 12)
 			UICorner_29.Parent = TextLabel_2
@@ -772,6 +930,7 @@ function _G.MyLib:CreateWindow(windowparams)
 				-- Make Dropdown Options
 				
 				local Option = Instance.new("TextButton")
+				local UICorner_26 = Instance.new("UICorner")
 
 				Option.Name = "Option"
 				Option.Parent = Dropdownframe
@@ -786,11 +945,17 @@ function _G.MyLib:CreateWindow(windowparams)
 				UICorner_26.CornerRadius = UDim.new(0, 12)
 				UICorner_26.Parent = Option
 				
+				while Option.TextFits == false do
+					Option.TextSize -= 0.1
+				end
+				
 				local UIListLayout_3 = Instance.new("UIListLayout")
 				
 				UIListLayout_3.Parent = Dropdownframe
 				UIListLayout_3.SortOrder = Enum.SortOrder.LayoutOrder
 				UIListLayout_3.Padding = UDim.new(0.00499999989, 3)
+				
+				Dropdownframe.CanvasSize = UDim2.new(0,0,0,#options*43.5-(#options/2))
 
 				local value = dropdownparams.Options[i]
 
@@ -808,15 +973,16 @@ function _G.MyLib:CreateWindow(windowparams)
 			local debounce = false
 
 			Dropdown.Size = UDim2.new(0, 240,0, 57)
-			DropdownFrame.Size = UDim2.new(0, 187,0, 0)
+			DropdownFrame.Size = UDim2.new(0, 160,0, 0)
 			DropdownFrame.Visible = false
 
 			Open.MouseButton1Down:Connect(function()
+				Tab.CanvasSize = UDim2.new(0,0,0,UIListLayout1.AbsoluteContentSize.Y)
 				if debounce == false then
 					debounce = true
 					if opened == false  then
 						Dropdown:TweenSize(UDim2.new(0, 240,0, 100), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 0.5)
-						DropdownFrame:TweenSize(UDim2.new(0, 187,0, 100), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 0.5)
+						DropdownFrame:TweenSize(UDim2.new(0, 160,0, 100), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 0.5)
 						TextLabel_2.Visible = false
 						DropdownFrame.Visible = true
 						wait(0.7)
@@ -824,7 +990,7 @@ function _G.MyLib:CreateWindow(windowparams)
 						opened = true
 					elseif opened == true then
 						Dropdown:TweenSize(UDim2.new(0, 240,0, 57), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 0.5)
-						DropdownFrame:TweenSize(UDim2.new(0, 187,0, 0), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 0.5)
+						DropdownFrame:TweenSize(UDim2.new(0, 160,0, 0), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 0.5)
 						wait(0.5)
 						TextLabel_2.Visible = true
 						DropdownFrame.Visible = false
@@ -851,7 +1017,7 @@ function _G.MyLib:CreateWindow(windowparams)
 			local minvalue = sliderparams.Min or 0
 			local maxvalue = sliderparams.Max or 10
 			name = sliderparams.Name or 'Slider'
-			local callback = sliderparams.CallBack or function()end
+			local callback = sliderparams.Callback or function()end
 
 			local Slider = Instance.new("Frame")
 			local Label_2 = Instance.new("TextLabel")
@@ -878,9 +1044,13 @@ function _G.MyLib:CreateWindow(windowparams)
 			Label_2.Position = UDim2.new(0.0540000014, 0, 0.0700000003, 0)
 			Label_2.Size = UDim2.new(0, 178, 0, 28)
 			Label_2.Font = Enum.Font.Gotham
-			Label_2.Text = "Slider Label"
+			Label_2.Text = name
 			Label_2.TextColor3 = Color3.fromRGB(229, 229, 229)
 			Label_2.TextSize = 14.000
+			
+			while Label_2.TextFits == false do
+				Label_2.TextSize -= 0.1
+			end
 
 			UICorner_4.CornerRadius = UDim.new(0, 12)
 			UICorner_4.Parent = Label_2
@@ -927,21 +1097,23 @@ function _G.MyLib:CreateWindow(windowparams)
 			UICorner_8.Parent = Slider
 			Tab.CanvasSize = UDim2.new(0,0,0,UIListLayout1.AbsoluteContentSize.Y)
 
-
 			-----Variables-----
 			local mouse = game.Players.LocalPlayer:GetMouse()
 			local uis = game:GetService("UserInputService")
 			local value;
+			local increment = 0.1
 
 			SliderButton.MouseButton1Down:Connect(function()
-				value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / SliderButton.AbsoluteSize.X) * SliderInner.AbsoluteSize.X) + tonumber(minvalue)) or 0
+				value = (math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / SliderButton.AbsoluteSize.X) * SliderInner.AbsoluteSize.X) + tonumber(minvalue))) or 0
+				value = math.floor(value / increment + 0.5) * (increment * 10000000) / 10000000
 				pcall(function()
 					callback(value)
 				end)
 				SliderInner.Size = UDim2.new(0, math.clamp(mouse.X - SliderInner.AbsolutePosition.X, 0, SliderButton.AbsoluteSize.X), 0, SliderButton.AbsoluteSize.Y)
 				moveconnection = mouse.Move:Connect(function()
 					Value.Text = value
-					value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / SliderButton.AbsoluteSize.X) * SliderInner.AbsoluteSize.X) + tonumber(minvalue))
+					value = (math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / SliderButton.AbsoluteSize.X) * SliderInner.AbsoluteSize.X) + tonumber(minvalue)))
+					value = math.floor(value / increment + 0.5) * (increment * 10000000) / 10000000
 					pcall(function()
 						callback(value)
 					end)
@@ -949,7 +1121,8 @@ function _G.MyLib:CreateWindow(windowparams)
 				end)
 				releaseconnection = uis.InputEnded:Connect(function(Mouse)
 					if Mouse.UserInputType == Enum.UserInputType.MouseButton1 then
-						value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / SliderButton.AbsoluteSize.X) * - SliderInner.AbsoluteSize.X) + tonumber(minvalue))
+						value = (math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / SliderButton.AbsoluteSize.X) * SliderInner.AbsoluteSize.X) + tonumber(minvalue)))
+						value = math.floor(value / increment + 0.5) * (increment * 10000000) / 10000000
 						pcall(function()
 							callback(value)
 						end)
@@ -989,6 +1162,10 @@ function _G.MyLib:CreateWindow(windowparams)
 			Label_5.TextColor3 = Color3.fromRGB(14, 14, 14)
 			Label_5.TextSize = 14.000
 			Label_5.Text = text
+			
+			while Label_5.TextFits == false do
+				Label_5.TextSize -= 0.1
+			end
 
 			UICorner_17.CornerRadius = UDim.new(0, 12)
 			UICorner_17.Parent = Label_5
@@ -1035,6 +1212,10 @@ function _G.MyLib:CreateWindow(windowparams)
 			Label_7.TextColor3 = Color3.fromRGB(14, 14, 14)
 			Label_7.TextSize = 14.000
 			Label_7.Text = text
+			
+			while Label_7.TextFits == false do
+				Label_7.TextSize -= 0.5
+			end
 
 			UICorner_30.CornerRadius = UDim.new(0, 12)
 			UICorner_30.Parent = Label_7
