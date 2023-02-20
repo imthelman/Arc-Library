@@ -541,31 +541,31 @@ function _G.MyLib:CreateWindow(windowparams)
 		Subtitle.TextStrokeColor3 = Color3.fromRGB(162, 162, 162)
 
 
-		
+
 
 
 		b:TweenSize(UDim2.new(0, 210, 0, 73), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 1)
 
 
-		
+
 
 
 		wait(5)
 
 
-		
+
 
 
 		b:Destroy()
 
 
-		
+
 
 
 	end
 
 
-	
+
 
 
 	for i, v in pairs(game:GetService('Players').LocalPlayer:WaitForChild("PlayerGui"):GetChildren()) do
@@ -654,6 +654,9 @@ function _G.MyLib:CreateWindow(windowparams)
 
 
 	local Subtitle = Instance.new("TextLabel")
+	local PfPandMisc = Instance.new("Folder")
+	local PfP = Instance.new("ImageLabel")
+	local UICornerPfP = Instance.new("UICorner")
 
 
 
@@ -743,7 +746,7 @@ function _G.MyLib:CreateWindow(windowparams)
 	UICornerC.Parent = Clipp
 
 
-	
+
 
 
 	UICornerF.CornerRadius = UDim.new(0, 25)
@@ -845,6 +848,22 @@ function _G.MyLib:CreateWindow(windowparams)
 
 
 	Tabs.Size = UDim2.new(0, 320, 0, 184)
+	
+	PfPandMisc.Name = "PfPandMisc"
+	PfPandMisc.Parent = BG
+
+	PfP.Name = "PfP"
+	PfP.Parent = PfPandMisc
+	PfP.BackgroundColor3 = Color3.fromRGB(84, 84, 84)
+	PfP.Position = UDim2.new(0.0295983087, 0, 0.649999976, 0)
+	PfP.Size = UDim2.new(0, 59, 0, 59)
+	PfP.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+	PfP.ZIndex = 25
+
+	UICornerPfP.CornerRadius = UDim.new(0, 15)
+	UICornerPfP.Name = "UICornerPfP"
+	UICornerPfP.Parent = PfP
+
 
 
 
@@ -1004,7 +1023,7 @@ function _G.MyLib:CreateWindow(windowparams)
 	Minimize.TextSize = 14.000
 
 
-	
+
 
 
 	_G.cTab = nil
@@ -1187,7 +1206,7 @@ function _G.MyLib:CreateWindow(windowparams)
 	Subtitle.ZIndex = 9
 
 
-	
+
 
 
 	Clipp:TweenSize(UDim2.new(0, 473, 0, 240), Enum.EasingDirection.Out, Enum.EasingStyle.Sine, 1)
@@ -1338,6 +1357,7 @@ function _G.MyLib:CreateWindow(windowparams)
 
 
 	end
+	PfP.Image = game:GetService('Players'):GetUserThumbnailAsync(game:GetService('Players').LocalPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size180x180)
 
 
 
@@ -3115,7 +3135,7 @@ function _G.MyLib:CreateWindow(windowparams)
 				end)
 
 
-				
+
 
 
 				pcall(function()
@@ -3745,7 +3765,7 @@ function _G.MyLib:CreateWindow(windowparams)
 					Tab.CanvasSize = UDim2.new(0,0,0,UIListLayout1.AbsoluteContentSize.Y)
 
 
-					
+
 
 
 					if keepoldoptions == false then
@@ -4339,7 +4359,7 @@ function _G.MyLib:CreateWindow(windowparams)
 			local increment = 0.1
 
 
-			
+
 
 
 			repeat
@@ -4924,7 +4944,7 @@ function _G.MyLib:CreateWindow(windowparams)
 		end
 
 
-		
+
 
 
 		runService.Heartbeat:Connect(function()
@@ -4955,13 +4975,13 @@ function _G.MyLib:CreateWindow(windowparams)
 	end
 
 
-	
+
 
 
 	return windowparams;
 
 
-	
+
 
 
 end
@@ -4986,7 +5006,7 @@ function _G.MyLib:Notify(params)
 	local done = true
 
 
-	
+
 
 
 	local ArcNotificationFrame = game:GetService('Players').LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild('ArcNotifications'):FindFirstChild('ArcNotificationFrame')
@@ -5011,7 +5031,7 @@ function _G.MyLib:Notify(params)
 	oNotification:FindFirstChild('Text').Text = text
 
 
-	
+
 
 
 	oNotification:TweenPosition(UDim2.new(0,0,0,0), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 0.5)
@@ -5023,7 +5043,7 @@ function _G.MyLib:Notify(params)
 	done = false
 
 
-	
+
 
 
 	oNotification:FindFirstChild('CloseNoti').MouseButton1Click:Connect(function()
@@ -5050,7 +5070,7 @@ function _G.MyLib:Notify(params)
 	end)
 
 
-	
+
 
 
 	if done == false then
