@@ -108,13 +108,77 @@ end
 
 ]]
 
-
-
-
-local Notification = Instance.new("Frame")
-
-
 local Notification_Frame = Instance.new("Frame")
+
+if not game:GetService('Players').LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild('ArcNotifications') then
+
+
+	local ArcNotifications = Instance.new("ScreenGui")
+
+
+	local ArcNotificationFrame = Instance.new("Frame")
+
+
+	local UIListLayout = Instance.new("UIListLayout")
+
+
+
+	ArcNotifications.Name = "ArcNotifications"
+
+
+	ArcNotifications.Parent = game:GetService('Players').LocalPlayer:WaitForChild("PlayerGui")
+
+
+	ArcNotifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+
+	ArcNotifications.ResetOnSpawn = false
+
+
+
+	ArcNotificationFrame.Name = "ArcNotificationFrame"
+
+
+	ArcNotificationFrame.Parent = ArcNotifications
+
+
+	ArcNotificationFrame.BackgroundTransparency = 1.000
+
+
+	ArcNotificationFrame.Position = UDim2.new(0.824999988, 0, 0.0250000004, 0)
+
+
+	ArcNotificationFrame.Size = UDim2.new(0, 275, 0.949999988, 0)
+
+
+
+	UIListLayout.Parent = ArcNotificationFrame
+
+
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+
+
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+
+	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+
+
+	UIListLayout.Padding = UDim.new(0, 5)
+
+
+else
+
+
+	NotificationFrame = game:GetService('Players').LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild('ArcNotifications')
+
+
+end
+
+
+
+
+--[[local Notification = Instance.new("Frame")
 
 
 local UICorner = Instance.new("UICorner")
@@ -142,7 +206,7 @@ local CloseNoti = Instance.new("TextButton")
 Notification.Name = "Notification"
 
 
-Notification.Parent = game.StarterGui.ArcNotificationsTest.ArcNotificationFrame
+Notification.Parent = game:GetService('Players').LocalPlayer.PlayerGui.ArcNotifications.ArcNotificationFrame
 
 
 Notification.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
@@ -315,74 +379,7 @@ BG.TextYAlignment = Enum.TextYAlignment.Top
 UICorner_3.CornerRadius = UDim.new(0, 25)
 
 
-UICorner_3.Parent = BG
-
-
-
-if not game:GetService('Players').LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild('ArcNotifications') then
-
-
-	local ArcNotifications = Instance.new("ScreenGui")
-
-
-	local ArcNotificationFrame = Instance.new("Frame")
-
-
-	local UIListLayout = Instance.new("UIListLayout")
-
-
-
-	ArcNotifications.Name = "ArcNotifications"
-
-
-	ArcNotifications.Parent = game:GetService('Players').LocalPlayer:WaitForChild("PlayerGui")
-
-
-	ArcNotifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-
-	ArcNotifications.ResetOnSpawn = false
-
-
-
-	ArcNotificationFrame.Name = "ArcNotificationFrame"
-
-
-	ArcNotificationFrame.Parent = ArcNotifications
-
-
-	ArcNotificationFrame.BackgroundTransparency = 1.000
-
-
-	ArcNotificationFrame.Position = UDim2.new(0.824999988, 0, 0.0250000004, 0)
-
-
-	ArcNotificationFrame.Size = UDim2.new(0, 275, 0.949999988, 0)
-
-
-
-	UIListLayout.Parent = ArcNotificationFrame
-
-
-	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
-
-
-	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-
-
-	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
-
-
-	UIListLayout.Padding = UDim.new(0, 5)
-
-
-else
-
-
-	NotificationFrame = game:GetService('Players').LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild('ArcNotifications')
-
-
-end
+UICorner_3.Parent = BG]]
 
 
 
@@ -848,7 +845,7 @@ function _G.MyLib:CreateWindow(windowparams)
 
 
 	Tabs.Size = UDim2.new(0, 320, 0, 184)
-	
+
 	PfPandMisc.Name = "PfPandMisc"
 	PfPandMisc.Parent = BG
 
@@ -4369,6 +4366,8 @@ function _G.MyLib:CreateWindow(windowparams)
 
 
 			until game:GetService('Players').LocalPlayer:WaitForChild("PlayerGui")
+			
+			SliderInner.Size = UDim2.new(0, math.clamp((SliderInner.AbsolutePosition.X % ((SliderInner.AbsolutePosition.X / value) ^ -100)) - SliderInner.AbsolutePosition.X, 0, SliderButton.AbsoluteSize.X), 0, SliderButton.AbsoluteSize.Y)--(SliderInner.AbsolutePosition.X % ((SliderInner.AbsolutePosition.X / value) ^ -100))
 
 
 			pcall(function()
@@ -4388,6 +4387,9 @@ function _G.MyLib:CreateWindow(windowparams)
 
 
 				value = math.floor(value / increment + 0.5) * (increment * 10000000) / 10000000
+
+
+				SliderInner.Size = UDim2.new(0, math.clamp(mouse.X - SliderInner.AbsolutePosition.X, 0, SliderButton.AbsoluteSize.X), 0, SliderButton.AbsoluteSize.Y)
 
 
 				pcall(function()
